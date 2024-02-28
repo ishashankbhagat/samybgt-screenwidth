@@ -12,7 +12,6 @@ Route::group(
 function () {
 
     Route::get('/getScreenWidth', [ScreenwidthController::class, 'getScreenWidth'])->name('getScreenWidth');
-    Route::get('/checkScreenWidth', [ScreenwidthController::class, 'checkScreenWidth'])->name('checkScreenWidth');
 
 });
 
@@ -26,5 +25,6 @@ Route::group(
 function () {
 
     Route::post('/setScreenWidth', [ScreenwidthController::class, 'setScreenWidth'])->name('setScreenWidth');
+    Route::get('/checkScreenWidth', [ScreenwidthController::class, 'checkScreenWidth'])->name('checkScreenWidth');
 
 });
