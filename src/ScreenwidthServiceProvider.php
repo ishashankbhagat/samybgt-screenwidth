@@ -45,8 +45,17 @@ class ScreenwidthServiceProvider extends ServiceProvider {
         $this->loadRoutesFrom($routeFilePathInUse);
     }
 
+
+    
+
+    public function loadHelpers()
+    {
+        require_once __DIR__.'/helpers.php';
+    }
+
   public function register()
   {
+    $this->loadHelpers();
 
   }
 
