@@ -6,7 +6,7 @@
 
 
 <script>
-    let screenWidth = window.innerWidth;
+    let screenWidth = window.screen.width;
     document.querySelector('.screenwidth').value = screenWidth;
 
     document.querySelector('form').submit();
