@@ -20,7 +20,10 @@ function reportWindowSize() {
             "Content-Type": "application/json; charset=utf-8",
             "X-CSRF-TOKEN": '{{csrf_token()}}'
         },
-        body: JSON.stringify({width: width })
+        body: JSON.stringify({
+            '_token': '{{csrf_token()}}',
+            'width': width,
+        })
     }).then((data) => {
         console.log('Received data');
         console.log(data); 
@@ -28,6 +31,10 @@ function reportWindowSize() {
 }
 
 window.addEventListener("resize", reportWindowSize);
-
-
 </script>
+
+@if(screenwidth_get() == null)
+<script>
+reportWindowSize()
+</script>
+@endif

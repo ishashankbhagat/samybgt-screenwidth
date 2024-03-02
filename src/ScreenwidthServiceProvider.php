@@ -22,11 +22,33 @@ class ScreenwidthServiceProvider extends ServiceProvider {
 
     $this->loadBladeDirectives();
 
+
+}
+
+public function loadBladeDirectives() 
+{
+  Blade::directive('screenwidth_reportWindowSize', function(){
+    return view('screenwidth::reportWindowSize');
+  });
+
+
+  Blade::directive('screenwidth_setScreenWidth', function(){
+    return view('screenwidth::setScreenWidth');
+  });
+
 }
 
     public function loadViewsWithFallbacks()
     {
-        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'screenwidth');
+
+      $webappViewFolder = resource_path('views/vendor/samybgt/screenwidth');
+
+      // - first the published/overwritten views (in case they have any changes)
+      if (file_exists($webappViewFolder)) {
+          $this->loadViewsFrom($webappViewFolder, 'screenwidth');
+      }
+
+      $this->loadViewsFrom(realpath(__DIR__.'/resources/views/vendor/samybgt/screenwidth'), 'screenwidth');
     }
 
     public function registerMiddlewareGroup(Router $router)
@@ -49,15 +71,6 @@ class ScreenwidthServiceProvider extends ServiceProvider {
         $this->loadRoutesFrom($routeFilePathInUse);
     }
 
-
-
-
-public function loadBladeDirectives() 
-{
-  Blade::directive('screenwidth_reportWindowSize', function(){
-    return view('screenwidth::screenwidth.reportWindowSize');
-  });
-}
 
     
 
