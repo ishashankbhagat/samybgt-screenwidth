@@ -16,5 +16,6 @@ function () {
     Route::get('/getScreenWidth', [ScreenwidthController::class, 'getScreenWidth'])->name('getScreenWidth');
     Route::post('/setScreenWidth', [ScreenwidthController::class, 'setScreenWidth'])->name('setScreenWidth');
     Route::get('/checkScreenWidth', [ScreenwidthController::class, 'checkScreenWidth'])->name('checkScreenWidth');
+    Route::post('/reportWindowSize', [ScreenwidthController::class, 'reportWindowSize'])->name('reportWindowSize');
 
 });

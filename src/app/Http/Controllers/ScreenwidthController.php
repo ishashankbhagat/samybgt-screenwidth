@@ -38,5 +38,27 @@ class ScreenwidthController extends Controller
         echo $screenWidth;
     }
 
+    public function reportWindowSize(Request $request)
+    {
+        $data = [];
+
+        $width = $request->width;
+        // dd($width);
+
+        $oldWidth = Session::get('screenWidth');
+
+        Session::put('screenWidth',$width);
+
+        $newWidth = Session::get('screenWidth');
+        
+
+        return response()->json([
+            'oldWidth' => $oldWidth,
+            'newWidth' => $newWidth,
+            'width' => $width
+        ]);
+
+    }
+
 
 }
