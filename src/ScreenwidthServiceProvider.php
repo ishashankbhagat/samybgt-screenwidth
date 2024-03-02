@@ -5,6 +5,7 @@ use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Blade;
 
 class ScreenwidthServiceProvider extends ServiceProvider {
 
@@ -18,6 +19,9 @@ class ScreenwidthServiceProvider extends ServiceProvider {
     $this->registerMiddlewareGroup($this->app->router);
 
     $this->setupRoutes($this->app->router);
+
+    $this->loadBladeDirectives();
+
 }
 
     public function loadViewsWithFallbacks()
@@ -45,6 +49,15 @@ class ScreenwidthServiceProvider extends ServiceProvider {
         $this->loadRoutesFrom($routeFilePathInUse);
     }
 
+
+
+
+public function loadBladeDirectives() 
+{
+  Blade::directive('screenwidth_reportWindowSize', function(){
+    return view('screenwidth::screenwidth.reportWindowSize');
+  });
+}
 
     
 
