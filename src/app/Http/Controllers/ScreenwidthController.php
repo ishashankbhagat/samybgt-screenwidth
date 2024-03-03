@@ -9,56 +9,56 @@ use Session;
 
 class ScreenwidthController extends Controller
 {
-    //
-    static public function getScreenWidth(Request $request)
-    {
-        // dd('dd');
-        return view('screenwidth::screenwidth.getScreenWidth');
+  //
+  static public function getScreenWidth(Request $request)
+  {
+    // dd('dd');
+    return view('screenwidth::screenwidth.getScreenWidth');
 
-    }
+  }
 
-    public function setScreenWidth(Request $request)
-    {
-        $data = [];
+  public function setScreenWidth(Request $request)
+  {
+    $data = [];
 
-        $width = $request->screenWidth;
-        // dd($width);
-        Session::put('screenWidth',$width);
+    $width = $request->screenWidth;
+    // dd($width);
+    Session::put('screenWidth',$width);
 
-        $intend = $request->session()->get('screenWidthIntend') ? $request->session()->get('screenWidthIntend') : '/';
+    $intend = $request->session()->get('screenWidthIntend') ? $request->session()->get('screenWidthIntend') : '/';
 
-        return redirect($intend);
+    return redirect($intend);
 
-    }
+  }
 
-    public function checkScreenWidth(Request $request)
-    {
-        $screenWidth = $request->session()->get('screenWidth');
+  public function checkScreenWidth(Request $request)
+  {
+    $screenWidth = $request->session()->get('screenWidth');
 
-        echo $screenWidth;
-    }
+    echo $screenWidth;
+  }
 
-    public function reportWindowSize(Request $request)
-    {
-        $data = [];
+  public function reportWindowSize(Request $request)
+  {
+    $data = [];
 
-        $width = $request->width;
-        // dd($width);
+    $width = $request->width;
+    // dd($width);
 
-        $oldWidth = Session::get('screenWidth');
+    $oldWidth = Session::get('screenWidth');
 
-        Session::put('screenWidth',$width);
+    Session::put('screenWidth',$width);
 
-        $newWidth = Session::get('screenWidth');
-        
+    $newWidth = Session::get('screenWidth');
 
-        return response()->json([
-            'oldWidth' => $oldWidth,
-            'newWidth' => $newWidth,
-            'width' => $width
-        ]);
 
-    }
+    return response()->json([
+    'oldWidth' => $oldWidth,
+    'newWidth' => $newWidth,
+    'width' => $width
+    ]);
+
+  }
 
 
 }
