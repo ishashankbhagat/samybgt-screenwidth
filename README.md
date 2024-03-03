@@ -73,11 +73,18 @@ screenwidth
 
 ## On Screen Resize Event
 
-All the code is readymade and ready to use. You don't need to worry about any coding, just include this file and resize will start working. It's important that you place it in the layout file for your application to look its best. I have it in my layout file `app.blade.php` and on the `login`/`register` pages.
+All the code is readymade and ready to use. You don't need to worry about any coding, just include this file and resize will start working. It's important that you place it in the layout file for your application to look its best. I have it in my layout file `app.blade.php` and on the `login`/`register` pages. 
+
+```php
+@screenwidth_reportWindowSize
+```
+
+Alternatively you can use the below code only if above directive doesn't work for you due to any version issue.
 
 ```php
 @include(screenwidth::screenwidth.reportWindowSize)
 ```
+
 
 ## Helpers
 
@@ -97,7 +104,8 @@ screenwidth_is('desktop')
 
 ## Contributing
 
-Thank you for considering contributing to this tool! 
+Thank you for considering contributing to this tool!
+
 [Palani Kumar](https://www.instagram.com/palanikumar_45)
 
 
