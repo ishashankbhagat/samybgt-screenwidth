@@ -6,11 +6,10 @@ Screenwidth is a php laravel package with easy to use syntax. We believe develop
 - Get device type based on width.
 - Check for a specific device type.
 
-
 Screenwidth is accessible, powerful, and acts as a tools required for large, robust applications.
 
-## Using Screenwidth
 
+## Using Screenwidth
 When using css, the content of the page will update in realtime as the user resizes the window,
 whereas this package debounces a network request and updates the page on the next page request.
 
@@ -21,7 +20,14 @@ composer require samybgt/screenwidth
 ```
 
 
-The default settings are based on following breakpoints
+## Breakpoints
+
+The default settings are based on following breakpoints. If you want to change these then please create a file in below location and then overwrite the values as per your need
+
+```php
+config/samybgt/screenwidth.php
+```
+
 ```php
 return [
   'devices' => [
@@ -41,19 +47,12 @@ return [
 ];
 ```
 
+## Loader
 
-## Helpers
+Only one time (in first load if application), you will get the message that says we are checking device width to give you the best view of the website. You can customize that UI by creating a file and giving own HTML.
 
 ```php
-//To get the width of the client screen.
-screenwidth_get()
-
-// To get the device type based on width and breakpoints given in config file
-screenwidth_device()
-
-//Check if the device is that type based on parameter and config file
-screenwidth_is('desktop')
-
+resources/views/vendor/samybgt/screenwidth/screenwidth_loader.blade.php
 ```
 
 
@@ -72,6 +71,20 @@ It's important that you place the `@include(screenwidth::screenwidth.reportWindo
 
 ```php
 @include(screenwidth::screenwidth.reportWindowSize)
+```
+
+## Helpers
+
+```php
+//To get the width of the client screen.
+screenwidth_get()
+
+// To get the device type based on width and breakpoints given in config file
+screenwidth_device()
+
+//Check if the device is that type based on parameter and config file
+screenwidth_is('desktop')
+
 ```
 
 
