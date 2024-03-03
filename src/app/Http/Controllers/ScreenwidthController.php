@@ -13,15 +13,12 @@ class ScreenwidthController extends Controller
     static public function getScreenWidth(Request $request)
     {
         // dd('dd');
-
-        return view('screenwidth::screenwidth_loader');
         return view('screenwidth::screenwidth.getScreenWidth');
 
     }
 
     public function setScreenWidth(Request $request)
     {
-        // dd($request->all());
         $data = [];
 
         $width = $request->screenWidth;

@@ -1,3 +1,6 @@
+
+@include('screenwidth::screenwidth_loader')
+
 <form action="{{route('setScreenWidth')}}" method="post">
     @csrf
     <input type="hidden" name="screenWidth" class="screenWidth" value="">
