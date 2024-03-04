@@ -47,6 +47,8 @@ return [
 
 ## Custom Breakpoints
 
+(This step is optional)
+
 If you want to change the breakpoints as per your need then please create a file in below location and then overwrite the values as per your need. It is a very powerful setting that gives full freedom to the developer to customize according to the requirement.
 
 ```php
@@ -54,6 +56,8 @@ config/samybgt/screenwidth.php
 ```
 
 ## Loader
+
+(This step is optional)
 
 Only one time (in first load of application), you will get the message that says we are checking device width to give you the best view of the website. You can customize that UI by creating a file and giving own HTML.
 
@@ -64,11 +68,30 @@ resources/views/vendor/samybgt/screenwidth/screenwidth_loader.blade.php
 
 ## Middleware
 
-Add this middleware to the route if needed.
+Middleware is already created by the vendor you just need to apply this middleware in your route group.
 
 ```php
 screenwidth
 ```
+
+Example 1: Apply complete to the web.php file
+```php
+app/Providers/RouteServiceProvider.php
+
+Route::middleware(['web','screenwidth'])
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web.php'));
+```
+
+Example 2: Apply to specific route group
+```php
+Route::group(['prefix' => '', 'middleware' => ['your_middleware_1','screenwidth']], function()
+{
+  Route::get('/route_1', 'AppController@method1');
+  Route::get('/', 'AppController@landing');
+});
+```
+
 
 
 ## On Screen Resize Event
@@ -88,15 +111,23 @@ Alternatively you can use the below code only if above directive doesn't work fo
 
 ## Helpers
 
+Helpers function are already created by the vendor and you just need to call the function directly and use it in your code.
+
 ```php
-//To get the width of the client screen.
+// To get the width of the client screen.
+
 screenwidth_get()
+// Output: 1234
 
 // To get the device type based on width and breakpoints given in config file
-screenwidth_device()
 
-//Check if the device is that type based on parameter and config file
+screenwidth_device()
+// Output: desktop
+
+// Check if the device is that type based on parameter and config file
+
 screenwidth_is('desktop')
+// Output: true / false
 
 ```
 
