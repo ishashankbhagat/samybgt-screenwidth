@@ -1,7 +1,7 @@
 <script>
 let screenwidth_sending_data = false;
 
-let screenwidth_auto_reload = {{config('smybgt.screenwidth.auto_reload')}};
+let screenwidth_auto_reload = {{config('samybgt.screenwidth.auto_reload')}};
 
 let screenwidth_get = '{{screenwidth_get()}}';
 
@@ -13,10 +13,10 @@ function screenwidth_update_width() {
 
 screenwidth_update_width();
 
-// console.log('screenwidth_get');
-// console.log(screenwidth_get);
-// console.log('screenwidth_width');
-// console.log(screenwidth_width);
+console.log('screenwidth_get');
+console.log(screenwidth_get);
+console.log('screenwidth_width');
+console.log(screenwidth_width);
 
 function reportWindowSize() {
 
