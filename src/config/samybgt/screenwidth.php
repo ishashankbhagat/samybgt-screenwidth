@@ -19,6 +19,12 @@ return [
       'max' => 10000
     ],
 
+  ],
+
+  'auto_reload' => true,
+
+  'exceptUrls' => [
+    
   ]
 
 

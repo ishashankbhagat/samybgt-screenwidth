@@ -15,6 +15,13 @@ class ScreenWidth
   */
   public function handle(Request $request, Closure $next): Response
   {
+
+    $exceptPathArray = config('samybgt.screenwidth.exceptUrls');
+    if (in_array($request->getPathInfo(),$exceptPathArray)) 
+    {
+        return $next($request);
+    }
+    
     if (\Session::has('screenWidth')) {
       return $next($request);
     }
