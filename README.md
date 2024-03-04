@@ -40,7 +40,11 @@ return [
       'min' => 992,
       'max' => 10000
     ],
-  ]
+  ],
+  'auto_reload' => true,
+  'exceptUrls' => [
+    
+  ],
 ];
 ```
 
