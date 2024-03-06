@@ -5,7 +5,7 @@ if (! function_exists('screenwidth_get'))
 
   function screenwidth_get()
   {
-    $screenwidth = Session::get('screenWidth');
+    $screenwidth = \Cookie::get('screenwidth');
 
     return $screenwidth;
   }
@@ -18,7 +18,7 @@ if (! function_exists('screenwidth_device'))
 
   function screenwidth_device($details=null)
   {
-    $screenwidth = Session::get('screenWidth');
+    $screenwidth = \Cookie::get('screenwidth');
 
     $device = null;
 
@@ -53,7 +53,7 @@ if (! function_exists('screenwidth_is'))
   function screenwidth_is($device,$details=null)
   {
 
-    $screenwidth = Session::get('screenWidth');
+    $screenwidth = \Cookie::get('screenwidth');
 
     $result = false;
 
