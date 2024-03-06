@@ -5,14 +5,14 @@ namespace Samybgt\Screenwidth\app\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-use Session;
+use Cookie;
 
 class ScreenwidthController extends Controller
 {
   //
   static public function getScreenWidth(Request $request)
   {
-    // dd('dd');
+    
     return view('screenwidth::screenwidth.getScreenWidth');
 
   }
@@ -22,10 +22,10 @@ class ScreenwidthController extends Controller
     $data = [];
 
     $width = $request->screenWidth;
-    // dd($width);
-    Session::put('screenWidth',$width);
-
-    $intend = $request->session()->get('screenWidthIntend') ? $request->session()->get('screenWidthIntend') : '/';
+    
+    Cookie::queue(Cookie::make('screenwidth', $width, 1440));
+    
+    $intend = Cookie::get('screenwidth') ? Cookie::get('screenwidth') : '/';
 
     return redirect($intend);
 
@@ -33,8 +33,8 @@ class ScreenwidthController extends Controller
 
   public function checkScreenWidth(Request $request)
   {
-    $screenWidth = $request->session()->get('screenWidth');
-
+    $screenWidth = Cookie::get('screenwidth');
+  
     echo $screenWidth;
   }
 
@@ -43,14 +43,8 @@ class ScreenwidthController extends Controller
     $data = [];
 
     $width = $request->width;
-    // dd($width);
-
-    $oldWidth = Session::get('screenWidth');
-
-    Session::put('screenWidth',$width);
-
-    $newWidth = Session::get('screenWidth');
-
+    
+    $newwidth = Cookie::queue(Cookie::make('screenwidth', $width, 1440));
 
     return response()->json([
     'oldWidth' => $oldWidth,
