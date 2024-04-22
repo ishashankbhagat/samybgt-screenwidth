@@ -15,11 +15,7 @@
         "laravel": {
             "providers": [
                 "Samybgt\\Screenwidth\\ScreenwidthServiceProvider"
-            ],
-            "aliases": {
-                "CRUD": "Backpack\\CRUD\\app\\Library\\CrudPanel\\CrudPanelFacade",
-                "Widget": "Backpack\\CRUD\\app\\Library\\Widget"
-            }
+            ]
         }
     },
 
@@ -30,5 +26,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "jaybizzle/crawler-detect": "^1.2"
+    }
 }

@@ -6,6 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Jaybizzle\CrawlerDetect\CrawlerDetect;
+
+
 class ScreenWidth
 {
   /**
@@ -15,6 +18,11 @@ class ScreenWidth
   */
   public function handle(Request $request, Closure $next): Response
   {
+
+    $CrawlerDetect = new CrawlerDetect;
+    if($CrawlerDetect->isCrawler() == true) {
+        return $next($request);
+    }
 
     $exceptPathArray = config('samybgt.screenwidth.exceptUrls');
     if (in_array($request->getPathInfo(),$exceptPathArray)) 
