@@ -25,7 +25,7 @@ class ScreenwidthController extends Controller
     
     Cookie::queue(Cookie::make('screenwidth', $width, 1440));
     
-    $intend = Cookie::get('screenwidth') ? Cookie::get('screenwidth') : '/';
+    $intend = Cookie::get('screenWidthIntend') ? Cookie::get('screenWidthIntend') : '/';
 
     return redirect($intend);
 
