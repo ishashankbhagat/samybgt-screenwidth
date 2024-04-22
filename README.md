@@ -16,7 +16,7 @@ whereas this package debounces a network request and updates the page on the nex
 
 ## Installation
 ```
-composer require samybgt/screenwidth:2.1
+composer require samybgt/screenwidth:2.3
 ```
 
 
@@ -40,7 +40,11 @@ return [
       'min' => 992,
       'max' => 10000
     ],
-  ]
+  ],
+  'auto_reload' => true,
+  'exceptUrls' => [
+    
+  ],
 ];
 ```
 

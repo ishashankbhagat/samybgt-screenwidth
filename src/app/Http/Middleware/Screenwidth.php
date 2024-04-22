@@ -5,6 +5,7 @@ namespace Samybgt\Screenwidth\app\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Cookie;
 
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
@@ -30,14 +31,14 @@ class ScreenWidth
         return $next($request);
     }
     
-    if (\Session::has('screenWidth')) {
+    if (Cookie::get('screenwidth')) {
       return $next($request);
     }
 
     $intend = url()->full();
     $route = route('getScreenWidth');
 
-    $request->session()->put('screenWidthIntend', $intend);
+    Cookie::queue(Cookie::make('screenWidthIntend', $intend, 1440));
 
     return redirect($route);
   }
