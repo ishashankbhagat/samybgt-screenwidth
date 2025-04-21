@@ -3,7 +3,7 @@ let screenwidth_sending_data = false;
 
 let screenwidth_get = '{{screenwidth_get()}}';
 
-let screenwidth_auto_reload = {{ config('samybgt.screenwidth.auto_reload') }};
+let screenwidth_auto_reload = {{ config('samybgt.screenwidth.auto_reload') }} : false;
   
 let screenwidth_width = 0;
   
