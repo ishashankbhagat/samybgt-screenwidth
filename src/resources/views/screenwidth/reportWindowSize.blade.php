@@ -3,8 +3,10 @@ let screenwidth_sending_data = false;
 
 let screenwidth_get = '{{screenwidth_get()}}';
 
+let screenwidth_auto_reload = {{ config('samybgt.screenwidth.auto_reload') }};
+  
 let screenwidth_width = 0;
-
+  
 function screenwidth_update_width() {
   screenwidth_width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 }
@@ -36,6 +38,9 @@ function reportWindowSize() {
     },
     body: JSON.stringify({width: screenwidth_width })
   }).then((data) => {
+    if (screenwidth_auto_reload == true) {
+      window.location.reload();
+    }
     screenwidth_sending_data = false;
     if (typeof onReportWindowSize === 'function')
     {
