@@ -1,12 +1,13 @@
 <script>
 let screenwidth_sending_data = false;
 
-let screenwidth_get = '{{screenwidth_get()}}';
+let screenwidth_get = parseInt('{{ screenwidth_get() }}', 10);
+// let screenwidth_get = '{{ screenwidth_get() }}';
 
 let screenwidth_auto_reload = {{ config('samybgt.screenwidth.auto_reload') }} ? {{ config('samybgt.screenwidth.auto_reload') }} : false;
-  
+
 let screenwidth_width = 0;
-  
+
 function screenwidth_update_width() {
   screenwidth_width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 }
@@ -65,14 +66,16 @@ const screenwidth_debounce = (callback, wait) => {
 
 window.addEventListener('resize', screenwidth_debounce(() => {
   screenwidth_update_width();
-  reportWindowSize()
+  if (Math.abs(screenwidth_width - screenwidth_get) > 20) {
+    reportWindowSize()
+  }
 }, 750))
 
-</script>
-
-
-<script>
-  if (screenwidth_width != screenwidth_get) {
-    reportWindowSize();
-  }
+    // Ensure reload doesn't happen endlessly, with a buffer of 20px difference
+    if (Math.abs(screenwidth_width - screenwidth_get) > 20) {
+        console.log('Screen width mismatch, reporting...');
+        reportWindowSize();
+    } else {
+        console.log('No significant width change detected.');
+    }
 </script>
